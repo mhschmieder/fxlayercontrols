@@ -59,5 +59,4 @@ public final class LayerDisplayTableCell extends ToggleButtonTableCell< LayerPro
                                                  layerName,
                                                  !selectedRecord.isLayerVisible() );
     }
-
 }

@@ -40,7 +40,7 @@ import com.mhschmieder.fxlayergraphics.model.LayerProperties;
 import javafx.collections.ObservableList;
 
 /**
- * Special editor to handle specifics of Layer Name editing restrictions.
+ * Special textField to handle specifics of Layer Name editing restrictions.
  */
 public final class LayerNameTableCell extends LabelEditorTableCell< LayerProperties, String > {
 
@@ -60,7 +60,7 @@ public final class LayerNameTableCell extends LabelEditorTableCell< LayerPropert
     protected void setBeanProperty( final LayerProperties selectedRecord ) {
         // Get the current displayed value of the Text Editor.
         // NOTE: We now get the adjusted bean value instead, or it gets lost.
-        final String newLayerName = getValue(); // getEditorValue();
+        final String newLayerName = getCachedValue(); // getEditorValue();
 
         // Enforce the Unique Layer Name Policy.
         final ObservableList< LayerProperties > layerCollection = getTableView().getItems();
@@ -68,10 +68,9 @@ public final class LayerNameTableCell extends LabelEditorTableCell< LayerPropert
         final int currentLayerIndex = LayerUtilities.getLayerIndex( layerCollection, oldLayerName );
         final String activeLayerName = LayerUtilities.getActiveLayerName( layerCollection );
         LayerUtilities.uniquefyLayerName( newLayerName,
-                                          _uniquefierNumberFormat,
+                                          uniquefierNumberFormat,
                                           layerCollection,
                                           currentLayerIndex,
                                           activeLayerName );
     }
-
 }

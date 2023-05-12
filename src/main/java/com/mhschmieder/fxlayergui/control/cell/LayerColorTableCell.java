@@ -43,7 +43,7 @@ public final class LayerColorTableCell extends ColorPickerTableCell< LayerProper
 
     public LayerColorTableCell( final TableColumn< LayerProperties, Color > column ) {
         // Always call the superclass constructor first!
-        super( column, "Click to select color for this Layer" ); //$NON-NLS-1$
+        super( column, "Click to Select Color for This Layer" ); //$NON-NLS-1$
     }
 
     @Override
@@ -54,5 +54,4 @@ public final class LayerColorTableCell extends ColorPickerTableCell< LayerProper
         // or rules and what are allowable colors (for now).
         // selectedRecord.setLayerColor( selectedRecord.getLayerColor() );
     }
-
-}// class LayerColorTableCell
+}

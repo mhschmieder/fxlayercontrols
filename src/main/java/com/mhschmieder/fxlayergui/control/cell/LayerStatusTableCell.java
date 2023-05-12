@@ -71,5 +71,4 @@ public class LayerStatusTableCell extends ToggleButtonTableCell< LayerProperties
         final String layerName = selectedRecord.getLayerName();
         LayerUtilities.enforceActiveLayerPolicy( layerCollection, layerName, false );
     }
-
 }

@@ -52,5 +52,4 @@ public final class LayerLockTableCell extends ToggleButtonTableCell< LayerProper
         // Toggle the cached Layer Locked status.
         selectedRecord.setLayerLocked( !selectedRecord.isLayerLocked() );
     }
-
 }
