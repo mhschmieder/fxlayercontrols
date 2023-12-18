@@ -57,7 +57,7 @@ public final class LayerNameTableCell extends LabelEditorTableCell< LayerPropert
     }
 
     @Override
-    protected void setBeanProperty( final LayerProperties selectedRecord ) {
+    public void setBeanProperty( final LayerProperties selectedRecord ) {
         // Get the current displayed value of the Text Editor.
         // NOTE: We now get the adjusted bean value instead, or it gets lost.
         final String newLayerName = getCachedValue(); // getEditorValue();

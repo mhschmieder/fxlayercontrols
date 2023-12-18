@@ -48,7 +48,7 @@ public final class LayerLockTableCell extends ToggleButtonTableCell< LayerProper
     }
 
     @Override
-    protected void setBeanProperty( final LayerProperties selectedRecord ) {
+    public void setBeanProperty( final LayerProperties selectedRecord ) {
         // Toggle the cached Layer Locked status.
         selectedRecord.setLayerLocked( !selectedRecord.isLayerLocked() );
     }

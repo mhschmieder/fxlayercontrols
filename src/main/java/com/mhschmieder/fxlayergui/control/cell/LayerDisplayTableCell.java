@@ -51,7 +51,7 @@ public final class LayerDisplayTableCell extends ToggleButtonTableCell< LayerPro
     }
 
     @Override
-    protected void setBeanProperty( final LayerProperties selectedRecord ) {
+    public void setBeanProperty( final LayerProperties selectedRecord ) {
         // Enforce the Hidden Layer Policy.
         final ObservableList< LayerProperties > layerCollection = getTableView().getItems();
         final String layerName = selectedRecord.getLayerName();

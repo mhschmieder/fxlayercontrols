@@ -51,16 +51,16 @@ public class LayerStatusTableCell extends ToggleButtonTableCell< LayerProperties
     }
 
     @Override
-    protected void setBeanProperty( final LayerProperties selectedRecord ) {
+    public void setBeanProperty( final LayerProperties selectedRecord ) {
         // NOTE: This is only modeled as a toggle so we can show two distinct
-        // states differently, but there must be better ways to do that. As it
-        // is, we need to at least avoid possible recursion caused by
-        // redundantly setting an already-set value, as well as unsetting a
-        // value, as clicking this button should never toggle the state and
-        // should only set it if currently unset.
+        //  states differently, but there must be better ways to do that. As
+        //  it is, we need to at least avoid possible recursion caused by
+        //  redundantly setting an already-set value, as well as unsetting a
+        //  value, as clicking this button should never toggle the state and
+        //  should only set it if currently unset.
         // NOTE: Due to programmatic changes, the toggle button's selected
-        // state can't be trusted, so we instead use the bean property as the
-        // reference for the toggle action.
+        //  state can't be trusted, so we instead use the bean property as the
+        //  reference for the toggle action.
         final boolean layerActive = selectedRecord.isLayerActive();
         if ( layerActive ) {
             return;

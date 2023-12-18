@@ -47,11 +47,11 @@ public final class LayerColorTableCell extends ColorPickerTableCell< LayerProper
     }
 
     @Override
-    protected void setBeanProperty( final LayerProperties selectedRecord ) {
+    public void setBeanProperty( final LayerProperties selectedRecord ) {
         // TODO: This is redundant, so is commented out, as bindings outside
-        // the table cell handlers already take care of syncing the bean
-        // property, and as we don't filter the value or enforce any constraints
-        // or rules and what are allowable colors (for now).
+        //  the table cell handlers already take care of syncing the bean
+        //  property, and as we don't filter the value or enforce any constraints
+        //  or rules and what are allowable colors (for now).
         // selectedRecord.setLayerColor( selectedRecord.getLayerColor() );
     }
 }
