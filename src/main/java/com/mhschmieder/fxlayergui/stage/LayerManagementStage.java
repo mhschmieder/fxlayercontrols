@@ -107,7 +107,7 @@ public final class LayerManagementStage extends XStage {
         _actions._fileActions._printAction.setEventHandler( evt -> doPrint() );
 
         // Load the action handlers for the "Export" actions.
-        _actions._fileActions._exportActions._exportImageGraphicsAction
+        _actions._fileActions._exportActions._exportRasterGraphicsAction
                 .setEventHandler( evt -> doExportImageGraphics() );
         _actions._fileActions._exportActions._exportVectorGraphicsAction
                 .setEventHandler( evt -> doExportVectorGraphics() );
@@ -130,8 +130,8 @@ public final class LayerManagementStage extends XStage {
     // Add the Tool Bar's event listeners.
     // NOTE: This method is invoked on the JavaFX Application Thread.
     // TODO: Use appropriate methodology to add an action linked to both
-    // the toolbar buttons and their associated menu items, so that when one
-    // is disabled the other is as well. Is this already true of what we do?
+    //  the toolbar buttons and their associated menu items, so that when one
+    //  is disabled the other is as well. Is this already true of what we do?
     @Override
     protected void addToolBarListeners() {
         // Load the event handler for the Create Layer Button.
@@ -202,26 +202,6 @@ public final class LayerManagementStage extends XStage {
         // updateContextualSettings();
     }
 
-    public void doExportImageGraphics() {
-        // Switch on export context, so we know which type of data and format to
-        // save.
-        final String graphicsCategory = "Layers";
-        fileExportRasterGraphics( this, 
-                                  _defaultDirectory, 
-                                  clientProperties, 
-                                  graphicsCategory );
-    }
-
-    public void doExportVectorGraphics() {
-        // Switch on export context, so we know which type of data and format to
-        // save.
-        final String graphicsCategory = "Layers";
-        fileExportVectorGraphics( this, 
-                                  _defaultDirectory, 
-                                  clientProperties, 
-                                  graphicsCategory );
-    }
-
     // This method is used during File Load post-processing of graphical
     // objects that have Layer assignments, to add ones not already present. As
     // these Layers come from files vs. user editing, we already know the names
@@ -250,6 +230,8 @@ public final class LayerManagementStage extends XStage {
         // Clear any selected rows in the Layers Table, to set enablement.
         clearSelection();
         updateContextualSettings();
+        
+        graphicsCategory = "Layers";
     }
 
     // Load the relevant actions for this Stage.
