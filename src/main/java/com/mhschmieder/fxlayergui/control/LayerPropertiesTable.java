@@ -1,7 +1,7 @@
 /**
  * MIT License
  *
- * Copyright (c) 2020, 2023 Mark Schmieder
+ * Copyright (c) 2020, 2025 Mark Schmieder
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +37,7 @@ import java.util.List;
 import com.mhschmieder.commonstoolkit.util.ClientProperties;
 import com.mhschmieder.fxguitoolkit.control.DynamicXTableView;
 import com.mhschmieder.fxguitoolkit.control.TableColumnFactory;
+import com.mhschmieder.fxguitoolkit.control.TableUtilities;
 import com.mhschmieder.fxlayergraphics.LayerUtilities;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
 import com.mhschmieder.fxlayergui.control.cell.LayerColorTableCell;
@@ -55,10 +56,10 @@ public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
 
     // Do not allow the user to sort by other than Layer Name.
     // NOTE: This has been reverted to disallowed due to our check for
-    // delete-enabled being by row number vs. by Layer Name, so sorting the
-    // Layers by name can allow the Default Layer 0 to be deleted. We should
-    // either exclude that Layer from sorting, or write special logic to detect
-    // the Default Layer by name vs. by row number.
+    //  delete-enabled being by row number vs. by Layer Name, so sorting the
+    //  Layers by name can allow the Default Layer 0 to be deleted. We should
+    //  either exclude that Layer from sorting, or write special logic to detect
+    //  the Default Layer by name vs. by row number.
     private static final boolean              SORTABLE_DEFAULT         = true;
 
     // Declare the table column header names.
@@ -170,8 +171,8 @@ public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
     }
 
     // TODO: Think about a different strategy that delegates this logic to the
-    // business model, unless it is clearly tied to view parameters such as row
-    // count. For instance, the business model should control the Default Layer.
+    //  business model, unless it is clearly tied to view parameters such as row
+    //  count. For instance, the business model should control the Default Layer.
     @Override
     public final boolean canDeleteTableRowAt( final int deleteIndex,
                                               final int minimumDeleteIndex,
@@ -194,14 +195,14 @@ public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
     }
 
     // TODO: Think about a different strategy that delegates this logic to the
-    // business model, unless it is clearly tied to view parameters such as row
-    // count. For instance, the business model should control the Default Layer.
+    //  business model, unless it is clearly tied to view parameters such as row
+    //  count. For instance, the business model should control the Default Layer.
     @Override
     public final int deleteTableRows() {
         // The deletable row range starts after the default "Layer 0".
         // NOTE: The minimum last row index of 0 is required for tables that
-        // cannot be empty (whether initially or after editing), as an index of
-        // -1 corresponds to a minimum row count of zero.
+        //  cannot be empty (whether initially or after editing), as an index of
+        //  -1 corresponds to a minimum row count of zero.
         final int minimumDeleteIndex = ROW_DEFAULT_LAYER + 1;
         final int minimumLastRowIndex = ROW_DEFAULT_LAYER;
 
@@ -248,7 +249,7 @@ public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
         tableColumnCollection.add( layerColorColumn );
 
         // TODO: Make a factory method, or at least a constant for the tool
-        // tip.
+        //  tip.
         layerColorColumn.setCellFactory( LayerColorTableCell::new );
 
         columnIndex = COLUMN_STATUS;
@@ -283,6 +284,9 @@ public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
 
         columns.addAll( 0, tableColumnCollection );
 
+        // Define a custom row factory to allow drag and drop of table rows.
+        TableUtilities.addDragDropSupport( this );
+
         // Make sure whichever row contains the Default Layer 0 in the Layer
         // Name column, keeps that row as the first row in the table, regardless
         // of which column header was clicked as the main sorting criteria.
@@ -316,8 +320,8 @@ public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
     }
 
     // TODO: Think about a different strategy that delegates this logic to the
-    // business model, unless it is clearly tied to view parameters such as row
-    // count. For instance, the business model should control the Default Layer.
+    //  business model, unless it is clearly tied to view parameters such as row
+    //  count. For instance, the business model should control the Default Layer.
     @Override
     public final int insertTableRow() {
         // Clone the selected or defaulted row when adding a new one, but do not
@@ -332,7 +336,7 @@ public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
     public final void reset() {
         // TODO: Reset the Layer Properties as well.
         // TODO: Set back to empty list with just Default Layer present, and
-        // forward this to the main application to sync it and reassign layers.
+        //  forward this to the main application to sync it and reassign layers.
     }
 
     public final void setLayerCollection( final ObservableList< LayerProperties > pLayerCollection ) {
