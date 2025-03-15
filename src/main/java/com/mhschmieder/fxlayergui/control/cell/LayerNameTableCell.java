@@ -1,7 +1,7 @@
 /**
  * MIT License
  *
- * Copyright (c) 2020, 2023 Mark Schmieder
+ * Copyright (c) 2020, 2025 Mark Schmieder
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -65,12 +65,9 @@ public final class LayerNameTableCell extends LabelEditorTableCell< LayerPropert
         // Enforce the Unique Layer Name Policy.
         final ObservableList< LayerProperties > layerCollection = getTableView().getItems();
         final String oldLayerName = selectedRecord.getLayerName();
-        final int currentLayerIndex = LayerUtilities.getLayerIndex( layerCollection, oldLayerName );
-        final String activeLayerName = LayerUtilities.getActiveLayerName( layerCollection );
-        LayerUtilities.uniquefyLayerName( newLayerName,
-                                          uniquefierNumberFormat,
-                                          layerCollection,
-                                          currentLayerIndex,
-                                          activeLayerName );
+        LayerUtilities.uniquefyLayerName( layerCollection,
+                                          newLayerName,
+                                          oldLayerName,
+                                          uniquefierNumberFormat );
     }
 }
