@@ -65,7 +65,7 @@ public final class LayerManagementToolBar extends ToolBar {
                               final LayerManagementActions layerManagementActions ) {
         // Make the Nodes for the Tool Bar.
         _predictButtons =
-                        new PredictButtons( pClientProperties, layerManagementActions._toolsActions );
+                        new PredictButtons( pClientProperties, layerManagementActions.simulationActions );
         _layerActionButtons = new LayerActionButtons();
 
         // Add some spacers to separate logical groupings.
@@ -76,8 +76,8 @@ public final class LayerManagementToolBar extends ToolBar {
 
         // Add all the Nodes to the Tool Bar.
         final ObservableList< Node > nodes = getItems();
-        nodes.addAll( _predictButtons._predictButton,
-                      _predictButtons._clearButton,
+        nodes.addAll( _predictButtons.predictButton,
+                      _predictButtons.clearButton,
                       spacer,
                       _layerActionButtons._createButton,
                       _layerActionButtons._deleteButton );
