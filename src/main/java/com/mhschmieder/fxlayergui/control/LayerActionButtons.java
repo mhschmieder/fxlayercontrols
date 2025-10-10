@@ -31,7 +31,6 @@
 package com.mhschmieder.fxlayergui.control;
 
 import com.mhschmieder.fxguitoolkit.control.LabeledControlFactory;
-
 import javafx.scene.control.Button;
 
 public final class LayerActionButtons {

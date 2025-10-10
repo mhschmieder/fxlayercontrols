@@ -30,8 +30,6 @@
  */
 package com.mhschmieder.fxlayergui.stage;
 
-import java.util.Optional;
-
 import com.mhschmieder.commonstoolkit.branding.ProductBranding;
 import com.mhschmieder.commonstoolkit.util.ClientProperties;
 import com.mhschmieder.fxguitoolkit.dialog.DialogUtilities;
@@ -44,13 +42,14 @@ import com.mhschmieder.fxlayergui.control.LayerManagementMenuFactory;
 import com.mhschmieder.fxlayergui.control.LayerManagementToolBar;
 import com.mhschmieder.fxlayergui.control.LayerPropertiesTable;
 import com.mhschmieder.fxlayergui.layout.LayerManagementPane;
-
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ToolBar;
 import javafx.scene.paint.Color;
+
+import java.util.Optional;
 
 public final class LayerManagementStage extends XStage {
 

@@ -34,7 +34,6 @@ import com.mhschmieder.fxgraphicstoolkit.paint.ColorConstants;
 import com.mhschmieder.fxguitoolkit.control.cell.ToggleButtonTableCell;
 import com.mhschmieder.fxlayergraphics.LayerUtilities;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
-
 import javafx.collections.ObservableList;
 
 public class LayerStatusTableCell extends ToggleButtonTableCell< LayerProperties, Boolean > {

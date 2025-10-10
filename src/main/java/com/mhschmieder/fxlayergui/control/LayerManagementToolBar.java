@@ -33,7 +33,6 @@ package com.mhschmieder.fxlayergui.control;
 import com.mhschmieder.commonstoolkit.util.ClientProperties;
 import com.mhschmieder.fxguitoolkit.control.PredictButtons;
 import com.mhschmieder.fxlayergui.action.LayerManagementActions;
-
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.ToolBar;

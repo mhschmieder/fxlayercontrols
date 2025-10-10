@@ -30,10 +30,6 @@
  */
 package com.mhschmieder.fxlayergui.control;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
 import com.mhschmieder.commonstoolkit.util.ClientProperties;
 import com.mhschmieder.fxguitoolkit.control.DynamicXTableView;
 import com.mhschmieder.fxguitoolkit.control.TableColumnFactory;
@@ -45,12 +41,15 @@ import com.mhschmieder.fxlayergui.control.cell.LayerDisplayTableCell;
 import com.mhschmieder.fxlayergui.control.cell.LayerLockTableCell;
 import com.mhschmieder.fxlayergui.control.cell.LayerNameTableCell;
 import com.mhschmieder.fxlayergui.control.cell.LayerStatusTableCell;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
 

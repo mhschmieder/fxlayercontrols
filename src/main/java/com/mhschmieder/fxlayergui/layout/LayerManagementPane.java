@@ -30,8 +30,6 @@
  */
 package com.mhschmieder.fxlayergui.layout;
 
-import org.apache.commons.math3.util.FastMath;
-
 import com.mhschmieder.commonstoolkit.util.ClientProperties;
 import com.mhschmieder.fxguitoolkit.SceneGraphUtilities;
 import com.mhschmieder.fxguitoolkit.layout.LayoutFactory;
@@ -39,7 +37,6 @@ import com.mhschmieder.fxguitoolkit.stage.XStage;
 import com.mhschmieder.fxlayergraphics.LayerUtilities;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
 import com.mhschmieder.fxlayergui.control.LayerPropertiesTable;
-
 import javafx.beans.InvalidationListener;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -48,6 +45,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import org.apache.commons.math3.util.FastMath;
 
 public final class LayerManagementPane extends BorderPane {
 

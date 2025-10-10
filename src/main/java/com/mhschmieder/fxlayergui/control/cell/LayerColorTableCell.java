@@ -32,7 +32,6 @@ package com.mhschmieder.fxlayergui.control.cell;
 
 import com.mhschmieder.fxguitoolkit.control.cell.ColorPickerTableCell;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
-
 import javafx.scene.control.TableColumn;
 import javafx.scene.paint.Color;
 
