@@ -30,12 +30,12 @@
  */
 package com.mhschmieder.fxlayergui.action;
 
-import com.mhschmieder.commonstoolkit.util.ClientProperties;
 import com.mhschmieder.fxguitoolkit.action.FileActions;
 import com.mhschmieder.fxguitoolkit.action.LabeledActionFactory;
 import com.mhschmieder.fxguitoolkit.action.SettingsActions;
 import com.mhschmieder.fxguitoolkit.action.SimulationActions;
 import com.mhschmieder.fxguitoolkit.action.XActionGroup;
+import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.scene.paint.Color;
 import org.controlsfx.control.action.Action;
 

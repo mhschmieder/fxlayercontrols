@@ -30,8 +30,6 @@
  */
 package com.mhschmieder.fxlayergui.stage;
 
-import com.mhschmieder.commonstoolkit.branding.ProductBranding;
-import com.mhschmieder.commonstoolkit.util.ClientProperties;
 import com.mhschmieder.fxguitoolkit.dialog.DialogUtilities;
 import com.mhschmieder.fxguitoolkit.stage.XStage;
 import com.mhschmieder.fxlayergraphics.LayerUtilities;
@@ -42,6 +40,8 @@ import com.mhschmieder.fxlayergui.control.LayerManagementMenuFactory;
 import com.mhschmieder.fxlayergui.control.LayerManagementToolBar;
 import com.mhschmieder.fxlayergui.control.LayerPropertiesTable;
 import com.mhschmieder.fxlayergui.layout.LayerManagementPane;
+import com.mhschmieder.jcommons.branding.ProductBranding;
+import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.ButtonType;

@@ -30,10 +30,10 @@
  */
 package com.mhschmieder.fxlayergui.control.cell;
 
-import com.mhschmieder.commonstoolkit.util.ClientProperties;
 import com.mhschmieder.fxguitoolkit.control.cell.LabelEditorTableCell;
 import com.mhschmieder.fxlayergraphics.LayerUtilities;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
+import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.collections.ObservableList;
 
 import java.util.List;
