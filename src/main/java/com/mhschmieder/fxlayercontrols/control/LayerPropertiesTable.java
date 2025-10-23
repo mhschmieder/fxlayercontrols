@@ -28,18 +28,18 @@
  *
  * Project: https://github.com/mhschmieder/fxlayergui
  */
-package com.mhschmieder.fxlayergui.control;
+package com.mhschmieder.fxlayercontrols.control;
 
-import com.mhschmieder.fxguitoolkit.control.DynamicXTableView;
-import com.mhschmieder.fxguitoolkit.control.TableColumnFactory;
-import com.mhschmieder.fxguitoolkit.control.TableUtilities;
+import com.mhschmieder.fxcontrols.control.DynamicXTableView;
+import com.mhschmieder.fxcontrols.control.TableColumnFactory;
+import com.mhschmieder.fxcontrols.control.TableUtilities;
+import com.mhschmieder.fxlayercontrols.control.cell.LayerColorTableCell;
+import com.mhschmieder.fxlayercontrols.control.cell.LayerDisplayTableCell;
+import com.mhschmieder.fxlayercontrols.control.cell.LayerLockTableCell;
+import com.mhschmieder.fxlayercontrols.control.cell.LayerNameTableCell;
+import com.mhschmieder.fxlayercontrols.control.cell.LayerStatusTableCell;
 import com.mhschmieder.fxlayergraphics.LayerUtilities;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
-import com.mhschmieder.fxlayergui.control.cell.LayerColorTableCell;
-import com.mhschmieder.fxlayergui.control.cell.LayerDisplayTableCell;
-import com.mhschmieder.fxlayergui.control.cell.LayerLockTableCell;
-import com.mhschmieder.fxlayergui.control.cell.LayerNameTableCell;
-import com.mhschmieder.fxlayergui.control.cell.LayerStatusTableCell;
 import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

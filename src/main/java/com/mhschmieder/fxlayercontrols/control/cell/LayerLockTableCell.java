@@ -28,28 +28,28 @@
  *
  * Project: https://github.com/mhschmieder/fxlayergui
  */
-package com.mhschmieder.fxlayergui.control;
+package com.mhschmieder.fxlayercontrols.control.cell;
 
-import com.mhschmieder.fxguitoolkit.action.XActionUtilities;
-import com.mhschmieder.fxlayergui.action.LayerManagementActions;
-import com.mhschmieder.jcommons.util.ClientProperties;
-import javafx.scene.control.MenuBar;
-import org.controlsfx.control.action.Action;
+import com.mhschmieder.fxcontrols.control.cell.ToggleButtonTableCell;
+import com.mhschmieder.fxgraphics.paint.ColorConstants;
+import com.mhschmieder.fxlayergraphics.model.LayerProperties;
 
-import java.util.Collection;
+public final class LayerLockTableCell extends ToggleButtonTableCell< LayerProperties, Boolean > {
 
-/**
- * This is a factory class for generating Menus for Layer Management.
- */
-public final class LayerManagementMenuFactory {
-
-    public static MenuBar getLayerManagementMenuBar( final ClientProperties pClientProperties,
-                                                     final LayerManagementActions layerManagementActions ) {
-        final Collection< Action > layerManagementMenuBarActionCollection = layerManagementActions
-                .getLayerManagementMenuBarActionCollection( pClientProperties );
-        final MenuBar layerManagementMenuBar = XActionUtilities
-                .createMenuBar( layerManagementMenuBarActionCollection );
-        return layerManagementMenuBar;
+    public LayerLockTableCell() {
+        // Always call the superclass constructor first!
+        super( "Locked", //$NON-NLS-1$
+               "Unlocked", //$NON-NLS-1$
+               ColorConstants.LOCKED_BACKGROUND_COLOR,
+               ColorConstants.UNLOCKED_BACKGROUND_COLOR,
+               ColorConstants.LOCKED_FOREGROUND_COLOR,
+               ColorConstants.UNLOCKED_FOREGROUND_COLOR,
+               "Click to Toggle Layer Lock Between Locked and Unlocked" ); //$NON-NLS-1$
     }
 
+    @Override
+    public void setBeanProperty( final LayerProperties selectedRecord ) {
+        // Toggle the cached Layer Locked status.
+        selectedRecord.setLayerLocked( !selectedRecord.isLayerLocked() );
+    }
 }

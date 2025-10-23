@@ -28,29 +28,34 @@
  *
  * Project: https://github.com/mhschmieder/fxlayergui
  */
-package com.mhschmieder.fxlayergui.control.cell;
+package com.mhschmieder.fxlayercontrols.control.cell;
 
-import com.mhschmieder.fxguitoolkit.control.cell.ColorPickerTableCell;
+import com.mhschmieder.fxcontrols.control.cell.ToggleButtonTableCell;
+import com.mhschmieder.fxgraphics.paint.ColorConstants;
+import com.mhschmieder.fxlayergraphics.LayerUtilities;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
-import javafx.scene.control.TableColumn;
-import javafx.scene.paint.Color;
+import javafx.collections.ObservableList;
 
-/**
- * This class gives us a way to interact with the Color Picker in tables.
- */
-public final class LayerColorTableCell extends ColorPickerTableCell< LayerProperties > {
+public final class LayerDisplayTableCell extends ToggleButtonTableCell< LayerProperties, Boolean > {
 
-    public LayerColorTableCell( final TableColumn< LayerProperties, Color > column ) {
+    public LayerDisplayTableCell() {
         // Always call the superclass constructor first!
-        super( column, "Click to Select Color for This Layer" ); //$NON-NLS-1$
+        super( "Visible", //$NON-NLS-1$
+               "Hidden", //$NON-NLS-1$
+               ColorConstants.VISIBLE_BACKGROUND_COLOR,
+               ColorConstants.HIDDEN_BACKGROUND_COLOR,
+               ColorConstants.VISIBLE_FOREGROUND_COLOR,
+               ColorConstants.HIDDEN_FOREGROUND_COLOR,
+               "Click to Toggle Layer Display Between Visible and Hidden" ); //$NON-NLS-1$
     }
 
     @Override
     public void setBeanProperty( final LayerProperties selectedRecord ) {
-        // TODO: This is redundant, so is commented out, as bindings outside
-        //  the table cell handlers already take care of syncing the bean
-        //  property, and as we don't filter the value or enforce any constraints
-        //  or rules and what are allowable colors (for now).
-        // selectedRecord.setLayerColor( selectedRecord.getLayerColor() );
+        // Enforce the Hidden Layer Policy.
+        final ObservableList< LayerProperties > layerCollection = getTableView().getItems();
+        final String layerName = selectedRecord.getLayerName();
+        LayerUtilities.enforceHiddenLayerPolicy( layerCollection,
+                                                 layerName,
+                                                 !selectedRecord.isLayerVisible() );
     }
 }

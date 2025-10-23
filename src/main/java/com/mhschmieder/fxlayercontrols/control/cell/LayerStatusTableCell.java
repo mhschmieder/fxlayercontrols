@@ -1,7 +1,7 @@
 /**
  * MIT License
  *
- * Copyright (c) 2020, 2025 Mark Schmieder
+ * Copyright (c) 2020, 2023 Mark Schmieder
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,45 +28,46 @@
  *
  * Project: https://github.com/mhschmieder/fxlayergui
  */
-package com.mhschmieder.fxlayergui.control.cell;
+package com.mhschmieder.fxlayercontrols.control.cell;
 
-import com.mhschmieder.fxguitoolkit.control.cell.LabelEditorTableCell;
+import com.mhschmieder.fxcontrols.control.cell.ToggleButtonTableCell;
+import com.mhschmieder.fxgraphics.paint.ColorConstants;
 import com.mhschmieder.fxlayergraphics.LayerUtilities;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
-import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.collections.ObservableList;
 
-import java.util.List;
+public class LayerStatusTableCell extends ToggleButtonTableCell< LayerProperties, Boolean > {
 
-/**
- * Special textField to handle specifics of Layer Name editing restrictions.
- */
-public final class LayerNameTableCell extends LabelEditorTableCell< LayerProperties, String > {
-
-    public LayerNameTableCell( final boolean pBlankTextAllowed,
-                               final ClientProperties pClientProperties ) {
-        this( null, pBlankTextAllowed, pClientProperties );
-    }
-
-    public LayerNameTableCell( final List< Integer > pUneditableRows,
-                               final boolean pBlankTextAllowed,
-                               final ClientProperties pClientProperties ) {
+    public LayerStatusTableCell() {
         // Always call the superclass constructor first!
-        super( pUneditableRows, pBlankTextAllowed, pClientProperties );
+        super( "Active", //$NON-NLS-1$
+               "Inactive", //$NON-NLS-1$
+               ColorConstants.ACTIVE_BACKGROUND_COLOR,
+               ColorConstants.INACTIVE_BACKGROUND_COLOR,
+               ColorConstants.ACTIVE_FOREGROUND_COLOR,
+               ColorConstants.INACTIVE_FOREGROUND_COLOR,
+               "Click to Toggle Layer Status Between Active and Inactive" ); //$NON-NLS-1$
     }
 
     @Override
     public void setBeanProperty( final LayerProperties selectedRecord ) {
-        // Get the current displayed value of the Text Editor.
-        // NOTE: We now get the adjusted bean value instead, or it gets lost.
-        final String newLayerName = getCachedValue(); // getEditorValue();
+        // NOTE: This is only modeled as a toggle so we can show two distinct
+        //  states differently, but there must be better ways to do that. As
+        //  it is, we need to at least avoid possible recursion caused by
+        //  redundantly setting an already-set value, as well as unsetting a
+        //  value, as clicking this button should never toggle the state and
+        //  should only set it if currently unset.
+        // NOTE: Due to programmatic changes, the toggle button's selected
+        //  state can't be trusted, so we instead use the bean property as the
+        //  reference for the toggle action.
+        final boolean layerActive = selectedRecord.isLayerActive();
+        if ( layerActive ) {
+            return;
+        }
 
-        // Enforce the Unique Layer Name Policy.
+        // Enforce the Active Layer Policy.
         final ObservableList< LayerProperties > layerCollection = getTableView().getItems();
-        final String oldLayerName = selectedRecord.getLayerName();
-        LayerUtilities.uniquefyLayerName( layerCollection,
-                                          newLayerName,
-                                          oldLayerName,
-                                          uniquefierNumberFormat );
+        final String layerName = selectedRecord.getLayerName();
+        LayerUtilities.enforceActiveLayerPolicy( layerCollection, layerName, false );
     }
 }

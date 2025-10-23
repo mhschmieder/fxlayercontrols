@@ -28,7 +28,7 @@
  *
  * Project: https://github.com/mhschmieder/fxlayergui
  */
-package com.mhschmieder.fxlayergui;
+package com.mhschmieder.fxlayercontrols;
 
 public class LayerManagementMessageFactory {
 

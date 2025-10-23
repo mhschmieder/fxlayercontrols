@@ -28,28 +28,25 @@
  *
  * Project: https://github.com/mhschmieder/fxlayergui
  */
-package com.mhschmieder.fxlayergui.control.cell;
+package com.mhschmieder.fxlayercontrols.control;
 
-import com.mhschmieder.fxgraphicstoolkit.paint.ColorConstants;
-import com.mhschmieder.fxguitoolkit.control.cell.ToggleButtonTableCell;
-import com.mhschmieder.fxlayergraphics.model.LayerProperties;
+import com.mhschmieder.fxcontrols.control.LabeledControlFactory;
+import javafx.scene.control.Button;
 
-public final class LayerLockTableCell extends ToggleButtonTableCell< LayerProperties, Boolean > {
+public final class LayerActionButtons {
 
-    public LayerLockTableCell() {
-        // Always call the superclass constructor first!
-        super( "Locked", //$NON-NLS-1$
-               "Unlocked", //$NON-NLS-1$
-               ColorConstants.LOCKED_BACKGROUND_COLOR,
-               ColorConstants.UNLOCKED_BACKGROUND_COLOR,
-               ColorConstants.LOCKED_FOREGROUND_COLOR,
-               ColorConstants.UNLOCKED_FOREGROUND_COLOR,
-               "Click to Toggle Layer Lock Between Locked and Unlocked" ); //$NON-NLS-1$
+    // Declare all of the Layer Action Buttons.
+    public Button _createButton;
+    public Button _deleteButton;
+
+    public LayerActionButtons() {
+        // Make the Action Buttons.
+        _createButton = LabeledControlFactory.getCreateLayerButton();
+        _deleteButton = LabeledControlFactory.getDeleteLayerButton();
     }
 
-    @Override
-    public void setBeanProperty( final LayerProperties selectedRecord ) {
-        // Toggle the cached Layer Locked status.
-        selectedRecord.setLayerLocked( !selectedRecord.isLayerLocked() );
+    public void setLayerDeleteEnabled( final boolean layerDeleteEnabled ) {
+        _deleteButton.setDisable( !layerDeleteEnabled );
     }
+
 }

@@ -28,14 +28,14 @@
  *
  * Project: https://github.com/mhschmieder/fxlayergui
  */
-package com.mhschmieder.fxlayergui.layout;
+package com.mhschmieder.fxlayercontrols.layout;
 
-import com.mhschmieder.fxguitoolkit.SceneGraphUtilities;
-import com.mhschmieder.fxguitoolkit.layout.LayoutFactory;
-import com.mhschmieder.fxguitoolkit.stage.XStage;
+import com.mhschmieder.fxcontrols.SceneGraphUtilities;
+import com.mhschmieder.fxcontrols.layout.LayoutFactory;
+import com.mhschmieder.fxcontrols.stage.XStage;
+import com.mhschmieder.fxlayercontrols.control.LayerPropertiesTable;
 import com.mhschmieder.fxlayergraphics.LayerUtilities;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
-import com.mhschmieder.fxlayergui.control.LayerPropertiesTable;
 import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.beans.InvalidationListener;
 import javafx.collections.ObservableList;

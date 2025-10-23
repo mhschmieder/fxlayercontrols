@@ -28,9 +28,9 @@
  *
  * Project: https://github.com/mhschmieder/fxlayergui
  */
-package com.mhschmieder.fxlayergui.control;
+package com.mhschmieder.fxlayercontrols.control;
 
-import com.mhschmieder.fxguitoolkit.control.TextSelector;
+import com.mhschmieder.fxcontrols.control.TextSelector;
 import com.mhschmieder.fxlayergraphics.LayerUtilities;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
 import com.mhschmieder.jcommons.util.ClientProperties;

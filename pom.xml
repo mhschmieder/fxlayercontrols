@@ -6,12 +6,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mhschmieder</groupId>
-    <artifactId>fxlayergui</artifactId>
+    <artifactId>fxlayercontrols</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>fxlayergui</name>
-	<url>https://github.com/mhschmieder/fxlayergui</url>
+	<name>fxlayercontrols</name>
+	<url>https://github.com/mhschmieder/fxlayercontrols</url>
 	<description>JavaFX based GUI support for basic layer management.</description>
 
 	<licenses>
@@ -23,9 +23,9 @@
 	</licenses>
 
 	<scm>
-		<url>https://github.com/mhschmieder/fxlayergui</url>
-		<connection>scm:git:git://github.com/mhschmieder/fxlayergu.git</connection>
-		<developerConnection>scm:git:git@github.com:mhschmieder/fxlayergu.git</developerConnection>
+		<url>https://github.com/mhschmieder/fxlayercontrols</url>
+		<connection>scm:git:git://github.com/mhschmieder/fxlayercontrols.git</connection>
+		<developerConnection>scm:git:git@github.com:mhschmieder/fxlayercontrols.git</developerConnection>
 	</scm>
 
 	<developers>
@@ -49,7 +49,7 @@
 		</dependency>
         <dependency>
             <groupId>com.mhschmieder</groupId>
-            <artifactId>fxguitoolkit</artifactId>
+            <artifactId>fxcontrols</artifactId>
             <version>0.1-SNAPSHOT</version>
         </dependency>
         <dependency>

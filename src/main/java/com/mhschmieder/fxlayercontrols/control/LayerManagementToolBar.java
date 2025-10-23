@@ -28,10 +28,10 @@
  *
  * Project: https://github.com/mhschmieder/fxlayergui
  */
-package com.mhschmieder.fxlayergui.control;
+package com.mhschmieder.fxlayercontrols.control;
 
-import com.mhschmieder.fxguitoolkit.control.PredictButtons;
-import com.mhschmieder.fxlayergui.action.LayerManagementActions;
+import com.mhschmieder.fxcontrols.control.PredictButtons;
+import com.mhschmieder.fxlayercontrols.action.LayerManagementActions;
 import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;

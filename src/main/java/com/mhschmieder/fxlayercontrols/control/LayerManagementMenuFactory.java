@@ -28,25 +28,28 @@
  *
  * Project: https://github.com/mhschmieder/fxlayergui
  */
-package com.mhschmieder.fxlayergui.control;
+package com.mhschmieder.fxlayercontrols.control;
 
-import com.mhschmieder.fxguitoolkit.control.LabeledControlFactory;
-import javafx.scene.control.Button;
+import com.mhschmieder.fxcontrols.action.XActionUtilities;
+import com.mhschmieder.fxlayercontrols.action.LayerManagementActions;
+import com.mhschmieder.jcommons.util.ClientProperties;
+import javafx.scene.control.MenuBar;
+import org.controlsfx.control.action.Action;
 
-public final class LayerActionButtons {
+import java.util.Collection;
 
-    // Declare all of the Layer Action Buttons.
-    public Button _createButton;
-    public Button _deleteButton;
+/**
+ * This is a factory class for generating Menus for Layer Management.
+ */
+public final class LayerManagementMenuFactory {
 
-    public LayerActionButtons() {
-        // Make the Action Buttons.
-        _createButton = LabeledControlFactory.getCreateLayerButton();
-        _deleteButton = LabeledControlFactory.getDeleteLayerButton();
-    }
-
-    public void setLayerDeleteEnabled( final boolean layerDeleteEnabled ) {
-        _deleteButton.setDisable( !layerDeleteEnabled );
+    public static MenuBar getLayerManagementMenuBar( final ClientProperties pClientProperties,
+                                                     final LayerManagementActions layerManagementActions ) {
+        final Collection< Action > layerManagementMenuBarActionCollection = layerManagementActions
+                .getLayerManagementMenuBarActionCollection( pClientProperties );
+        final MenuBar layerManagementMenuBar = XActionUtilities
+                .createMenuBar( layerManagementMenuBarActionCollection );
+        return layerManagementMenuBar;
     }
 
 }

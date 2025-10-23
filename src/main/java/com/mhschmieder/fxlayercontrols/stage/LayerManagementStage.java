@@ -28,18 +28,18 @@
  *
  * Project: https://github.com/mhschmieder/fxlayergui
  */
-package com.mhschmieder.fxlayergui.stage;
+package com.mhschmieder.fxlayercontrols.stage;
 
-import com.mhschmieder.fxguitoolkit.dialog.DialogUtilities;
-import com.mhschmieder.fxguitoolkit.stage.XStage;
+import com.mhschmieder.fxcontrols.dialog.DialogUtilities;
+import com.mhschmieder.fxcontrols.stage.XStage;
+import com.mhschmieder.fxlayercontrols.LayerManagementMessageFactory;
+import com.mhschmieder.fxlayercontrols.action.LayerManagementActions;
+import com.mhschmieder.fxlayercontrols.control.LayerManagementMenuFactory;
+import com.mhschmieder.fxlayercontrols.control.LayerManagementToolBar;
+import com.mhschmieder.fxlayercontrols.control.LayerPropertiesTable;
+import com.mhschmieder.fxlayercontrols.layout.LayerManagementPane;
 import com.mhschmieder.fxlayergraphics.LayerUtilities;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
-import com.mhschmieder.fxlayergui.LayerManagementMessageFactory;
-import com.mhschmieder.fxlayergui.action.LayerManagementActions;
-import com.mhschmieder.fxlayergui.control.LayerManagementMenuFactory;
-import com.mhschmieder.fxlayergui.control.LayerManagementToolBar;
-import com.mhschmieder.fxlayergui.control.LayerPropertiesTable;
-import com.mhschmieder.fxlayergui.layout.LayerManagementPane;
 import com.mhschmieder.jcommons.branding.ProductBranding;
 import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.collections.ObservableList;
