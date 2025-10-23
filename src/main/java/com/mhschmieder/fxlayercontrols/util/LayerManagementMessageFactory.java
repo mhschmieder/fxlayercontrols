@@ -1,7 +1,7 @@
-/**
+/*
  * MIT License
  *
- * Copyright (c) 2020, 2023 Mark Schmieder
+ * Copyright (c) 2020, 2025, Mark Schmieder. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,29 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * This file is part of the FxLayerGui Library
+ * This file is part of the fxlayercontrols Library
  *
  * You should have received a copy of the MIT License along with the
- * FxLayerGui Library. If not, see <https://opensource.org/licenses/MIT>.
+ * fxlayercontrols Library. If not, see <https://opensource.org/licenses/MIT>.
  *
- * Project: https://github.com/mhschmieder/fxlayergui
+ * Project: https://github.com/mhschmieder/fxlayercontrols
  */
-package com.mhschmieder.fxlayercontrols;
+package com.mhschmieder.fxlayercontrols.util;
 
 public class LayerManagementMessageFactory {
 
     // NOTE: The constructor is disabled, as this is a static class.
     private LayerManagementMessageFactory() {}
 
-    public static final String getDeleteLayersMasthead() {
-        return "Confirm Delete Layers"; //$NON-NLS-1$
+    public static String getDeleteLayersMasthead() {
+        return "Confirm Delete Layers";
     }
 
-    public static final String getDeleteLayersMessage() {
-        return "Are you sure you want to delete the selected layers?"; //$NON-NLS-1$
+    public static String getDeleteLayersMessage() {
+        return "Are you sure you want to delete the selected layers?";
     }
 
-    public static final String getDeleteLayersTitle() {
-        return "Delete Layers"; //$NON-NLS-1$
+    public static String getDeleteLayersTitle() {
+        return "Delete Layers";
     }
 }
