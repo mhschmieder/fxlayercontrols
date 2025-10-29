@@ -32,7 +32,7 @@ package com.mhschmieder.fxlayercontrols.control.cell;
 
 import com.mhschmieder.fxcontrols.control.cell.ToggleButtonTableCell;
 import com.mhschmieder.fxgraphics.paint.ColorConstants;
-import com.mhschmieder.fxlayergraphics.LayerUtilities;
+import com.mhschmieder.fxlayergraphics.LayerPropertiesManager;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
 import javafx.collections.ObservableList;
 
@@ -66,8 +66,10 @@ public class LayerStatusTableCell extends ToggleButtonTableCell< LayerProperties
         }
 
         // Enforce the Active Layer Policy.
-        final ObservableList< LayerProperties > layerCollection = getTableView().getItems();
+        final ObservableList< LayerProperties > layerCollection
+                = getTableView().getItems();
         final String layerName = selectedRecord.getLayerName();
-        LayerUtilities.enforceActiveLayerPolicy( layerCollection, layerName, false );
+        LayerPropertiesManager.enforceActiveLayerPolicy(
+                layerCollection, layerName, false );
     }
 }

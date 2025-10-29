@@ -38,7 +38,7 @@ import com.mhschmieder.fxlayercontrols.control.cell.LayerDisplayTableCell;
 import com.mhschmieder.fxlayercontrols.control.cell.LayerLockTableCell;
 import com.mhschmieder.fxlayercontrols.control.cell.LayerNameTableCell;
 import com.mhschmieder.fxlayercontrols.control.cell.LayerStatusTableCell;
-import com.mhschmieder.fxlayergraphics.LayerUtilities;
+import com.mhschmieder.fxlayergraphics.LayerPropertiesManager;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
 import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.collections.FXCollections;
@@ -82,7 +82,7 @@ public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
 
     // Declare the enforced default row/index of 0 for the Default Layer.
     public static final int                   ROW_DEFAULT_LAYER        =
-                                                                LayerUtilities.DEFAULT_LAYER_INDEX;
+            LayerPropertiesManager.DEFAULT_LAYER_INDEX;
 
     // Declare the array of column names to be displayed in the table header.
     public static final String[]              _columnName              =
@@ -143,7 +143,8 @@ public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
         }
 
         // Insert a new cloned Layer into the Layer Collection.
-        final LayerProperties layer = LayerUtilities.addLayerClone( _layerCollection, insertIndex );
+        final LayerProperties layer = LayerPropertiesManager.addLayerClone(
+                _layerCollection, insertIndex );
 
         // Make sure we catch failed inserts, to avoid null pointers later on.
         if ( layer == null ) {
@@ -188,8 +189,8 @@ public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
         }
 
         // Now, make sure the Layer at the selected row isn't locked.
-        final LayerProperties layerToDelete = LayerUtilities.getLayer( _layerCollection,
-                                                                       deleteIndex );
+        final LayerProperties layerToDelete = LayerPropertiesManager.getLayer(
+                _layerCollection, deleteIndex );
         return ( layerToDelete == null ) ? false : !layerToDelete.isLayerLocked();
     }
 
@@ -292,12 +293,12 @@ public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
         sortPolicyProperty().set( tableView -> {
             final Comparator< LayerProperties > comparator = ( layer1, layer2 ) -> {
                 final String layerName1 = layer1.getLayerName();
-                if ( LayerUtilities.DEFAULT_LAYER_NAME.equals( layerName1 ) ) {
+                if ( LayerPropertiesManager.DEFAULT_LAYER_NAME.equals( layerName1 ) ) {
                     return -1;
                 }
 
                 final String layerName2 = layer2.getLayerName();
-                if ( LayerUtilities.DEFAULT_LAYER_NAME.equals( layerName2 ) ) {
+                if ( LayerPropertiesManager.DEFAULT_LAYER_NAME.equals( layerName2 ) ) {
                     return 1;
                 }
 

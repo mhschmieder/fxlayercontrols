@@ -32,7 +32,7 @@ package com.mhschmieder.fxlayercontrols.control.cell;
 
 import com.mhschmieder.fxcontrols.control.cell.ToggleButtonTableCell;
 import com.mhschmieder.fxgraphics.paint.ColorConstants;
-import com.mhschmieder.fxlayergraphics.LayerUtilities;
+import com.mhschmieder.fxlayergraphics.LayerPropertiesManager;
 import com.mhschmieder.fxlayergraphics.model.LayerProperties;
 import javafx.collections.ObservableList;
 
@@ -54,7 +54,7 @@ public final class LayerDisplayTableCell extends ToggleButtonTableCell< LayerPro
         // Enforce the Hidden Layer Policy.
         final ObservableList< LayerProperties > layerCollection = getTableView().getItems();
         final String layerName = selectedRecord.getLayerName();
-        LayerUtilities.enforceHiddenLayerPolicy( layerCollection,
+        LayerPropertiesManager.enforceHiddenLayerPolicy( layerCollection,
                                                  layerName,
                                                  !selectedRecord.isLayerVisible() );
     }

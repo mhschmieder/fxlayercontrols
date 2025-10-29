@@ -1,7 +1,7 @@
-/**
+/*
  * MIT License
  *
- * Copyright (c) 2020, 2023 Mark Schmieder
+ * Copyright (c) 2020, 2025, Mark Schmieder. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,22 +31,25 @@
 package com.mhschmieder.fxlayercontrols.control;
 
 import com.mhschmieder.fxcontrols.control.TextSelector;
-import com.mhschmieder.fxlayergraphics.LayerUtilities;
-import com.mhschmieder.fxlayergraphics.model.LayerProperties;
+import com.mhschmieder.fxlayergraphics.Layer;
+import com.mhschmieder.fxlayergraphics.LayerManager;
+import com.mhschmieder.fxlayergraphics.LayerPropertiesManager;
 import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.SingleSelectionModel;
 
+import java.util.List;
+
 public class LayerSelector extends TextSelector {
 
     // Cache the current Layer Collection, as it is needed for accurate names.
-    protected ObservableList< LayerProperties > _layerCollection;
+    protected List< Layer > _layerCollection;
 
     // Cache the displayed list of Layer Names, so we can compare during
     // updates.
-    protected ObservableList< String >          _layerNames;
+    protected List< String >          _layerNames;
 
     // Keep track of whether this instance supports multi-edit ("various").
     protected boolean                           _supportMultiEdit;
@@ -74,9 +77,9 @@ public class LayerSelector extends TextSelector {
     private final void initComboBox() {
         // Set the non-editable drop-list of Layers.
         // NOTE: We start with just the Default Layer.
-        final ObservableList< LayerProperties > defaultLayerCollection = FXCollections
+        final ObservableList< Layer > defaultLayerCollection = FXCollections
                 .observableArrayList();
-        final LayerProperties defaultLayer = LayerUtilities.makeDefaultLayer();
+        final Layer defaultLayer = LayerManager.makeDefaultLayer();
         defaultLayerCollection.add( defaultLayer );
         setLayerCollection( defaultLayerCollection, defaultLayer );
 
@@ -89,7 +92,8 @@ public class LayerSelector extends TextSelector {
                     if ( item != null ) {
                         setText( item );
 
-                        final boolean disable = LayerUtilities.VARIOUS_LAYER_NAME.equals( item );
+                        final boolean disable = LayerPropertiesManager
+                                .VARIOUS_LAYER_NAME.equals( item );
                         setDisable( disable );
                     }
                     else {
@@ -103,7 +107,7 @@ public class LayerSelector extends TextSelector {
     }
 
     // Set the drop-list of available Layer Names from the collection.
-    public final void setLayerCollection( final ObservableList< LayerProperties > layerCollection ) {
+    public final void setLayerCollection( final List<Layer> layerCollection ) {
         // Cache the global reference so it stays in sync vs. using setItems()
         // -- otherwise renamings and Add/Delete would require resetting the
         // collection here vs. depending on run-time extraction methods.
@@ -114,8 +118,8 @@ public class LayerSelector extends TextSelector {
     }
 
     // Set the drop-list of available Layer Names from the collection.
-    private final void setLayerCollection( final ObservableList< LayerProperties > layerCollection,
-                                           final LayerProperties layerCurrent ) {
+    private final void setLayerCollection( final ObservableList< Layer > layerCollection,
+                                           final Layer layerCurrent ) {
         // Save the selection to reinstate after replacing the drop-list.
         final String layerNameCurrent = ( layerCurrent != null )
             ? layerCurrent.getLayerName()
@@ -145,8 +149,8 @@ public class LayerSelector extends TextSelector {
             }
             else if ( layerNames.size() > 0 ) {
                 // If no match found, default to first item in display list.
-                final String layerNameDefault =
-                                              layerNames.get( LayerUtilities.DEFAULT_LAYER_INDEX );
+                final String layerNameDefault = layerNames.get(
+                        LayerPropertiesManager.DEFAULT_LAYER_INDEX );
                 if ( layerNameDefault != null ) {
                     setValue( layerNameDefault );
                 }
@@ -168,7 +172,7 @@ public class LayerSelector extends TextSelector {
 
     public final boolean updateLayerNames() {
         // Conditionally replace the entire list with the new collection.
-        final ObservableList< String > layerNames = LayerUtilities
+        final List< String > layerNames = LayerManager
                 .getAssignableLayerNames( _layerCollection, _supportMultiEdit );
         if ( !layerNames.equals( _layerNames ) ) {
             // If the list size shrank, the selected index is automatically
@@ -181,7 +185,7 @@ public class LayerSelector extends TextSelector {
                 : layerNames.size() < _layerNames.size();
 
             _layerNames = layerNames;
-            setItems( _layerNames );
+            setItems(FXCollections.observableArrayList( _layerNames ) );
 
             // Make sure the Combo Box width grows, if necessary, to support
             // longer names that may have just been added or changed.
