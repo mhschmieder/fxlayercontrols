@@ -31,9 +31,9 @@
 package com.mhschmieder.fxlayercontrols.control;
 
 import com.mhschmieder.fxcontrols.control.TextSelector;
+import com.mhschmieder.fxlayercontrols.util.LayerPropertiesManager;
 import com.mhschmieder.fxlayergraphics.Layer;
 import com.mhschmieder.fxlayergraphics.LayerManager;
-import com.mhschmieder.fxlayergraphics.LayerPropertiesManager;
 import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

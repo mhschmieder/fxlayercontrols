@@ -31,8 +31,8 @@
 package com.mhschmieder.fxlayercontrols.control.cell;
 
 import com.mhschmieder.fxcontrols.control.cell.LabelEditorTableCell;
-import com.mhschmieder.fxlayergraphics.LayerPropertiesManager;
-import com.mhschmieder.fxlayergraphics.model.LayerProperties;
+import com.mhschmieder.fxlayercontrols.model.LayerProperties;
+import com.mhschmieder.fxlayercontrols.util.LayerPropertiesManager;
 import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.collections.ObservableList;
 
@@ -41,7 +41,7 @@ import java.util.List;
 /**
  * Special textField to handle specifics of Layer Name editing restrictions.
  */
-public final class LayerNameTableCell extends LabelEditorTableCell< LayerProperties, String > {
+public final class LayerNameTableCell extends LabelEditorTableCell<LayerProperties, String > {
 
     public LayerNameTableCell( final boolean pBlankTextAllowed,
                                final ClientProperties pClientProperties ) {

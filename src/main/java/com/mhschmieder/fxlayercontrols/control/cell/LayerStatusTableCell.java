@@ -32,11 +32,11 @@ package com.mhschmieder.fxlayercontrols.control.cell;
 
 import com.mhschmieder.fxcontrols.control.cell.ToggleButtonTableCell;
 import com.mhschmieder.fxgraphics.paint.ColorConstants;
-import com.mhschmieder.fxlayergraphics.LayerPropertiesManager;
-import com.mhschmieder.fxlayergraphics.model.LayerProperties;
+import com.mhschmieder.fxlayercontrols.model.LayerProperties;
+import com.mhschmieder.fxlayercontrols.util.LayerPropertiesManager;
 import javafx.collections.ObservableList;
 
-public class LayerStatusTableCell extends ToggleButtonTableCell< LayerProperties, Boolean > {
+public class LayerStatusTableCell extends ToggleButtonTableCell<LayerProperties, Boolean > {
 
     public LayerStatusTableCell() {
         // Always call the superclass constructor first!

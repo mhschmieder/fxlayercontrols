@@ -38,8 +38,8 @@ import com.mhschmieder.fxlayercontrols.control.cell.LayerDisplayTableCell;
 import com.mhschmieder.fxlayercontrols.control.cell.LayerLockTableCell;
 import com.mhschmieder.fxlayercontrols.control.cell.LayerNameTableCell;
 import com.mhschmieder.fxlayercontrols.control.cell.LayerStatusTableCell;
-import com.mhschmieder.fxlayergraphics.LayerPropertiesManager;
-import com.mhschmieder.fxlayergraphics.model.LayerProperties;
+import com.mhschmieder.fxlayercontrols.model.LayerProperties;
+import com.mhschmieder.fxlayercontrols.util.LayerPropertiesManager;
 import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,7 +51,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class LayerPropertiesTable extends DynamicXTableView< LayerProperties > {
+public class LayerPropertiesTable extends DynamicXTableView<LayerProperties> {
 
     // Do not allow the user to sort by other than Layer Name.
     // NOTE: This has been reverted to disallowed due to our check for

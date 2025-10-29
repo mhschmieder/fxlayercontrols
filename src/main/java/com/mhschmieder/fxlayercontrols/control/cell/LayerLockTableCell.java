@@ -32,9 +32,9 @@ package com.mhschmieder.fxlayercontrols.control.cell;
 
 import com.mhschmieder.fxcontrols.control.cell.ToggleButtonTableCell;
 import com.mhschmieder.fxgraphics.paint.ColorConstants;
-import com.mhschmieder.fxlayergraphics.model.LayerProperties;
+import com.mhschmieder.fxlayercontrols.model.LayerProperties;
 
-public final class LayerLockTableCell extends ToggleButtonTableCell< LayerProperties, Boolean > {
+public final class LayerLockTableCell extends ToggleButtonTableCell<LayerProperties, Boolean > {
 
     public LayerLockTableCell() {
         // Always call the superclass constructor first!

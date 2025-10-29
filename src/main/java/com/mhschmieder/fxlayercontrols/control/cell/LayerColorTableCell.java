@@ -31,14 +31,14 @@
 package com.mhschmieder.fxlayercontrols.control.cell;
 
 import com.mhschmieder.fxcontrols.control.cell.ColorPickerTableCell;
-import com.mhschmieder.fxlayergraphics.model.LayerProperties;
+import com.mhschmieder.fxlayercontrols.model.LayerProperties;
 import javafx.scene.control.TableColumn;
 import javafx.scene.paint.Color;
 
 /**
  * This class gives us a way to interact with the Color Picker in tables.
  */
-public final class LayerColorTableCell extends ColorPickerTableCell< LayerProperties > {
+public final class LayerColorTableCell extends ColorPickerTableCell<LayerProperties> {
 
     public LayerColorTableCell( final TableColumn< LayerProperties, Color > column ) {
         // Always call the superclass constructor first!
