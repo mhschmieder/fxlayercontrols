@@ -1,4 +1,4 @@
-/**
+/*
  * MIT License
  *
  * Copyright (c) 2020, 2025 Mark Schmieder
@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * This file is part of the FxLayerGui Library
+ * This file is part of the FxLayerControls Library
  *
  * You should have received a copy of the MIT License along with the
- * FxLayerGui Library. If not, see <https://opensource.org/licenses/MIT>.
+ * FxLayerControls Library. If not, see <https://opensource.org/licenses/MIT>.
  *
- * Project: https://github.com/mhschmieder/fxlayergui
+ * Project: https://github.com/mhschmieder/fxlayercontrols
  */
 package com.mhschmieder.fxlayercontrols.control;
 
@@ -78,38 +78,37 @@ public class LayerPropertiesTable extends DynamicXTableView<LayerProperties> {
     private static final int                  COLUMN_LOCK              = COLUMN_DISPLAY + 1;
     private static final int                  COLUMN_LAST              = COLUMN_LOCK;
     protected static final int                NUMBER_OF_COLUMNS        =
-                                                                ( COLUMN_LAST - COLUMN_FIRST ) + 1;
+            ( COLUMN_LAST - COLUMN_FIRST ) + 1;
 
     // Declare the enforced default row/index of 0 for the Default Layer.
     public static final int                   ROW_DEFAULT_LAYER        =
             LayerPropertiesManager.DEFAULT_LAYER_INDEX;
 
     // Declare the array of column names to be displayed in the table header.
-    public static final String[]              _columnName              =
-                                                          new String[] {
-                                                                         COLUMN_HEADER_LAYER_NAME,
-                                                                         COLUMN_HEADER_COLOR,
-                                                                         COLUMN_HEADER_STATUS,
-                                                                         COLUMN_HEADER_DISPLAY,
-                                                                         COLUMN_HEADER_LOCK };
+    public static final String[] _columnName =new String[] {
+            COLUMN_HEADER_LAYER_NAME,
+            COLUMN_HEADER_COLOR,
+            COLUMN_HEADER_STATUS,
+            COLUMN_HEADER_DISPLAY,
+            COLUMN_HEADER_LOCK };
 
     // Declare preferred widths for each column.
     // NOTE: These numbers must add up to the assumed table width of 440.
-    protected static final int[]              _columnWidth             = new int[] {
-                                                                                     240,                                 // COLUMN_LAYER_NAME
-                                                                                     120,                                 // COLUMN_COLOR
-                                                                                     60,                                  // COLUMN_STATUS
-                                                                                     60,                                  // COLUMN_DISPLAY
-                                                                                     80                                   // COLUMN_LOCK
+    protected static final int[] _columnWidth = new int[] {
+            240, // COLUMN_LAYER_NAME
+            120, // COLUMN_COLOR
+            60, // COLUMN_STATUS
+            60, // COLUMN_DISPLAY
+            80 // COLUMN_LOCK
     };
 
     // Declare the array of column property names to be used for data binding.
-    protected static final String[]           _columnPropertyName      = {
-                                                                           "layerName",                                   // COLUMN_LAYER_NAME //$NON-NLS-1$
-                                                                           "layerColor",                                  // COLUMN_COLOR //$NON-NLS-1$
-                                                                           "layerActive",                                 // COLUMN_STATUS //$NON-NLS-1$
-                                                                           "layerVisible",                                // COLUMN_DISPLAY //$NON-NLS-1$
-                                                                           "layerLocked"                                  // COLUMN_LOCK //$NON-NLS-1$
+    protected static final String[]  _columnPropertyName= {
+            "layerName", // COLUMN_LAYER_NAME
+            "layerColor", // COLUMN_COLOR
+            "layerActive", // COLUMN_STATUS
+            "layerVisible", // COLUMN_DISPLAY
+            "layerLocked" // COLUMN_LOCK
     };
 
     // Cache the Layer Collection reference.
@@ -136,9 +135,9 @@ public class LayerPropertiesTable extends DynamicXTableView<LayerProperties> {
                                 final int maximumLastRowIndex ) {
         // First determine whether the indicated row can be inserted.
         if ( !canInsertTableRowAt( insertIndex,
-                                   minimumInsertIndex,
-                                   maximumInsertIndex,
-                                   maximumLastRowIndex ) ) {
+                minimumInsertIndex,
+                maximumInsertIndex,
+                maximumLastRowIndex ) ) {
             return -1;
         }
 
@@ -165,9 +164,9 @@ public class LayerPropertiesTable extends DynamicXTableView<LayerProperties> {
         final int maximumDeleteIndex = getLastRowIndex();
         final int minimumLastRowIndex = ROW_DEFAULT_LAYER;
         return canDeleteTableRowAt( deleteIndex,
-                                    minimumDeleteIndex,
-                                    maximumDeleteIndex,
-                                    minimumLastRowIndex );
+                minimumDeleteIndex,
+                maximumDeleteIndex,
+                minimumLastRowIndex );
     }
 
     // TODO: Think about a different strategy that delegates this logic to the
@@ -182,16 +181,16 @@ public class LayerPropertiesTable extends DynamicXTableView<LayerProperties> {
         // the minimum number of rows required by the table, ignore the deletion
         // request.
         if ( !super.canDeleteTableRowAt( deleteIndex,
-                                         minimumDeleteIndex,
-                                         maximumDeleteIndex,
-                                         minimumLastRowIndex ) ) {
+                minimumDeleteIndex,
+                maximumDeleteIndex,
+                minimumLastRowIndex ) ) {
             return false;
         }
 
         // Now, make sure the Layer at the selected row isn't locked.
         final LayerProperties layerToDelete = LayerPropertiesManager.getLayer(
                 _layerCollection, deleteIndex );
-        return ( layerToDelete == null ) ? false : !layerToDelete.isLayerLocked();
+        return ( layerToDelete != null ) && !layerToDelete.isLayerLocked();
     }
 
     // TODO: Think about a different strategy that delegates this logic to the
@@ -207,7 +206,8 @@ public class LayerPropertiesTable extends DynamicXTableView<LayerProperties> {
         final int minimumLastRowIndex = ROW_DEFAULT_LAYER;
 
         // Delete the selected table row(s).
-        final int referenceIndex = deleteTableRows( minimumDeleteIndex, minimumLastRowIndex );
+        final int referenceIndex = deleteTableRows(
+                minimumDeleteIndex, minimumLastRowIndex );
 
         return referenceIndex;
     }
@@ -221,31 +221,38 @@ public class LayerPropertiesTable extends DynamicXTableView<LayerProperties> {
         setPrefSize( 600d, 240d );
         setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
 
-        final ObservableList< TableColumn< LayerProperties, ? > > columns = getColumns();
+        final ObservableList< TableColumn< LayerProperties, ? > > columns
+                = getColumns();
         final ArrayList< TableColumn< LayerProperties, ? > > tableColumnCollection =
-                                                                                   new ArrayList<>( NUMBER_OF_COLUMNS );
+                new ArrayList<>( NUMBER_OF_COLUMNS );
 
         int columnIndex = COLUMN_LAYER_NAME;
-        final TableColumn< LayerProperties, String > layerNameColumn = TableColumnFactory
+        final TableColumn< LayerProperties, String > layerNameColumn
+                = TableColumnFactory
                 .makeTableColumnForString( _columnName[ columnIndex ],
-                                           _columnWidth[ columnIndex ],
-                                           _columnPropertyName[ columnIndex ],
-                                           SORTABLE_DEFAULT );
+                        _columnWidth[ columnIndex ],
+                        _columnPropertyName[ columnIndex ],
+                        SORTABLE_DEFAULT );
         tableColumnCollection.add( layerNameColumn );
 
         layerNameColumn.setCellFactory( column -> {
-            final List< Integer > uneditableRows = new ArrayList<>( 1 );
+            final List< Integer > uneditableRows
+                    = new ArrayList<>( 1 );
             uneditableRows.add( Integer.valueOf( ROW_DEFAULT_LAYER ) );
 
-            return new LayerNameTableCell( uneditableRows, false, pClientProperties );
+            return new LayerNameTableCell(
+                    uneditableRows,
+                    false,
+                    pClientProperties );
         } );
 
         columnIndex = COLUMN_COLOR;
-        final TableColumn< LayerProperties, Color > layerColorColumn = TableColumnFactory
+        final TableColumn< LayerProperties, Color > layerColorColumn
+                = TableColumnFactory
                 .makeTableColumnForColor( _columnName[ columnIndex ],
-                                          _columnWidth[ columnIndex ],
-                                          _columnPropertyName[ columnIndex ],
-                                          SORTABLE_DEFAULT );
+                        _columnWidth[ columnIndex ],
+                        _columnPropertyName[ columnIndex ],
+                        SORTABLE_DEFAULT );
         tableColumnCollection.add( layerColorColumn );
 
         // TODO: Make a factory method, or at least a constant for the tool
@@ -253,34 +260,43 @@ public class LayerPropertiesTable extends DynamicXTableView<LayerProperties> {
         layerColorColumn.setCellFactory( LayerColorTableCell::new );
 
         columnIndex = COLUMN_STATUS;
-        final TableColumn< LayerProperties, Boolean > layerStatusColumn = TableColumnFactory
+        final TableColumn< LayerProperties, Boolean > layerStatusColumn
+                = TableColumnFactory
                 .makeTableColumnForBoolean( _columnName[ columnIndex ],
-                                            _columnWidth[ columnIndex ],
-                                            _columnPropertyName[ columnIndex ],
-                                            SORTABLE_DEFAULT );
+                        _columnWidth[ columnIndex ],
+                        _columnPropertyName[ columnIndex ],
+                        SORTABLE_DEFAULT );
         tableColumnCollection.add( layerStatusColumn );
 
-        layerStatusColumn.setCellFactory( column -> new LayerStatusTableCell() );
+        layerStatusColumn.setCellFactory(
+                column ->
+                        new LayerStatusTableCell() );
 
         columnIndex = COLUMN_DISPLAY;
-        final TableColumn< LayerProperties, Boolean > layerDisplayColumn = TableColumnFactory
+        final TableColumn< LayerProperties, Boolean > layerDisplayColumn
+                = TableColumnFactory
                 .makeTableColumnForBoolean( _columnName[ columnIndex ],
-                                            _columnWidth[ columnIndex ],
-                                            _columnPropertyName[ columnIndex ],
-                                            SORTABLE_DEFAULT );
+                        _columnWidth[ columnIndex ],
+                        _columnPropertyName[ columnIndex ],
+                        SORTABLE_DEFAULT );
         tableColumnCollection.add( layerDisplayColumn );
 
-        layerDisplayColumn.setCellFactory( column -> new LayerDisplayTableCell() );
+        layerDisplayColumn.setCellFactory(
+                column ->
+                        new LayerDisplayTableCell() );
 
         columnIndex = COLUMN_LOCK;
-        final TableColumn< LayerProperties, Boolean > layerLockColumn = TableColumnFactory
+        final TableColumn< LayerProperties, Boolean > layerLockColumn
+                = TableColumnFactory
                 .makeTableColumnForBoolean( _columnName[ columnIndex ],
-                                            _columnWidth[ columnIndex ],
-                                            _columnPropertyName[ columnIndex ],
-                                            SORTABLE_DEFAULT );
+                        _columnWidth[ columnIndex ],
+                        _columnPropertyName[ columnIndex ],
+                        SORTABLE_DEFAULT );
         tableColumnCollection.add( layerLockColumn );
 
-        layerLockColumn.setCellFactory( column -> new LayerLockTableCell() );
+        layerLockColumn.setCellFactory(
+                column ->
+                        new LayerLockTableCell() );
 
         columns.addAll( 0, tableColumnCollection );
 
@@ -291,18 +307,22 @@ public class LayerPropertiesTable extends DynamicXTableView<LayerProperties> {
         // Name column, keeps that row as the first row in the table, regardless
         // of which column header was clicked as the main sorting criteria.
         sortPolicyProperty().set( tableView -> {
-            final Comparator< LayerProperties > comparator = ( layer1, layer2 ) -> {
+            final Comparator< LayerProperties > comparator = (
+                    layer1, layer2 ) -> {
                 final String layerName1 = layer1.getLayerName();
-                if ( LayerPropertiesManager.DEFAULT_LAYER_NAME.equals( layerName1 ) ) {
+                if ( LayerPropertiesManager.DEFAULT_LAYER_NAME.equals(
+                        layerName1 ) ) {
                     return -1;
                 }
 
                 final String layerName2 = layer2.getLayerName();
-                if ( LayerPropertiesManager.DEFAULT_LAYER_NAME.equals( layerName2 ) ) {
+                if ( LayerPropertiesManager.DEFAULT_LAYER_NAME.equals(
+                        layerName2 ) ) {
                     return 1;
                 }
 
-                final Comparator< LayerProperties > tableComparator = tableView.getComparator();
+                final Comparator< LayerProperties > tableComparator
+                        = tableView.getComparator();
 
                 // No column sorted: don't change order.
                 if ( tableComparator == null ) {
@@ -339,7 +359,8 @@ public class LayerPropertiesTable extends DynamicXTableView<LayerProperties> {
         //  forward this to the main application to sync it and reassign layers.
     }
 
-    public final void setLayerCollection( final ObservableList< LayerProperties > pLayerCollection ) {
+    public final void setLayerCollection(
+            final ObservableList< LayerProperties > pLayerCollection ) {
         // Cache a local copy of the Layer Collection, to act on directly.
         _layerCollection = pLayerCollection;
 
@@ -351,5 +372,4 @@ public class LayerPropertiesTable extends DynamicXTableView<LayerProperties> {
         // Update the table's entire item list from the cached collection.
         setItems( _layerCollection );
     }
-
 }

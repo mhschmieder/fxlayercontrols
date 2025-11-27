@@ -1,7 +1,7 @@
-/**
+/*
  * MIT License
  *
- * Copyright (c) 2020, 2023 Mark Schmieder
+ * Copyright (c) 2020, 2025 Mark Schmieder
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * This file is part of the FxLayerGui Library
+ * This file is part of the FxLayerControls Library
  *
  * You should have received a copy of the MIT License along with the
- * FxLayerGui Library. If not, see <https://opensource.org/licenses/MIT>.
+ * FxLayerControls Library. If not, see <https://opensource.org/licenses/MIT>.
  *
- * Project: https://github.com/mhschmieder/fxlayergui
+ * Project: https://github.com/mhschmieder/fxlayercontrols
  */
 package com.mhschmieder.fxlayercontrols.control.cell;
 
@@ -38,11 +38,15 @@ import javafx.scene.paint.Color;
 /**
  * This class gives us a way to interact with the Color Picker in tables.
  */
-public final class LayerColorTableCell extends ColorPickerTableCell<LayerProperties> {
+public final class LayerColorTableCell
+        extends ColorPickerTableCell< LayerProperties > {
 
-    public LayerColorTableCell( final TableColumn< LayerProperties, Color > column ) {
+    public LayerColorTableCell(
+            final TableColumn< LayerProperties, Color > column ) {
         // Always call the superclass constructor first!
-        super( column, "Click to Select Color for This Layer" ); //$NON-NLS-1$
+        super(
+                column,
+                "Click to Select Color for This Layer" );
     }
 
     @Override
